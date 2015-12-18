@@ -1,0 +1,62 @@
+<div class="container" ng-init="loadSellerProducts()">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form" role="form">
+                <legend>What do you sell?</legend>
+                <div class="form-group"> 
+                    <button type="submit" class="btn btn-info" ng-click="addProduct()">Add Item</button>
+                </div>
+                <div class="form-group">
+
+    <table class="table table-bordered table-hover table-condensed" >
+        <tr style="font-weight: bold">
+          <td style="width:35%">Item name</td>
+          <td style="width:20%">Available quantity</td>
+          <td style="width:25%">Amout per unit(Rs)</td>
+          <td style="width:20%">District</td>
+          <td style="width:20%">Action</td>
+        </tr>
+    <tr ng-repeat="product in sellerproducts">
+      <td>
+        <span editable-text="product.name" e-name="productname" e-form="rowform" onbeforesave="checkProductName($data, product.name)" e-required>
+          {{ product.name || 'empty' }}
+        </span>
+      </td>
+      <td>
+        <span editable-text="product.quantity" e-name="productquantity" e-form="rowform" e-required>
+          {{ product.quantity || 'empty' }}
+        </span>
+      </td>
+      <td>
+        <span editable-text="product.price" e-name="productprice" e-form="rowform" e-required>
+          {{ product.price || 'empty' }}
+        </span>
+      </td>
+      <td>
+        <span editable-select="product.district" e-name="group" onshow="loadDistricts()" e-form="rowform" e-ng-options="district.id as district.name for district in districts">
+          <!-- {{ showGroup(user) }} -->
+        </span>
+      </td>
+      <td style="white-space: nowrap">
+        <!-- form -->
+        <form editable-form name="rowform" onbeforesave="saveProduct($data, product.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == product">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
+          <button class="btn btn-danger" ng-click="removeProduct($index)">Remove</button>
+        </div>  
+      </td>
+    </tr>
+  </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<html ng-app="demoapp">
+	<head>
+		<title>Demo Application</title>
+
+		<!-- <link rel="stylesheet" type="text/css" href="css/bower.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="demoapp/demoapp.css">
+		<link rel="stylesheet" type="text/css" href="common/common.css">
+		<link rel="stylesheet" type="text/css" href="seller/seller.css">
+
+		<link href="common/xeditable.css" rel="stylesheet">
+		<script src="assets/js/angular.js"></script>
+		<script src="assets/js/xeditable.js"></script>
+		
+		<script src="temp/js/bower.js"></script>
+		<script src="demoapp/demoapp.js"></script>
+		<script src="seller/seller.js"></script>
+		<script src="seller/sellerService.js"></script>
+		<script src="temp/js/templates.js"></script>
+	</head>
+
+	<body>
+		<div ng-include='"src/common/header.html"'></div>
+		<div ng-view></div>
+	</body>
+
+</html>
